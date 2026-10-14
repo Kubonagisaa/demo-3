@@ -8,7 +8,11 @@ export const metadata: Metadata = {
     "Thoughtfully selected essentials for your workspace, wardrobe, home, and everyday life. A single-vendor concept store.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
