@@ -1,29 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=clash-grotesk@400,500,600,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #F8F7F2;
-  --foreground: #292D29;
-  --color-warm-white: #F8F7F2;
-  --color-linen: #E8E5DA;
-  --color-sage: #7D927C;
-  --color-forest: #34483B;
-  --color-forest-dark: #28382E;
-  --color-ink: #292D29;
-  --color-hairline: #D8D4C7;
+  --background: #F8F5F0;
+  --foreground: #262321;
+  --color-chalk: #F8F5F0;
+  --color-pure-white: #FFFFFF;
+  --color-soft-black: #262321;
+  --color-burgundy: #8F3040;
+  --color-burgundy-hover: #792534;
+  --color-burgundy-dark: #621D29;
+  --color-dusty-rose: #EBD9DC;
+  --color-dusty-rose-light: #F7EFF1;
+  --color-warm-border: #E7E1DC;
+  --color-hairline: #E7E1DC;
+  --color-muted: #736B66;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-warm-white: #F8F7F2;
-  --color-linen: #E8E5DA;
-  --color-sage: #7D927C;
-  --color-forest: #34483B;
-  --color-forest-dark: #28382E;
-  --color-ink: #292D29;
-  --color-hairline: #D8D4C7;
-  --font-display: 'Clash Grotesk', 'General Sans', system-ui, -apple-system, sans-serif;
+  --color-chalk: #F8F5F0;
+  --color-pure-white: #FFFFFF;
+  --color-soft-black: #262321;
+  --color-burgundy: #8F3040;
+  --color-burgundy-hover: #792534;
+  --color-burgundy-dark: #621D29;
+  --color-dusty-rose: #EBD9DC;
+  --color-dusty-rose-light: #F7EFF1;
+  --color-warm-border: #E7E1DC;
+  --color-hairline: #E7E1DC;
+  --color-muted: #736B66;
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'General Sans', system-ui, -apple-system, sans-serif;
   --font-body: 'General Sans', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
 }
 
@@ -32,6 +42,22 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Thin scrollbar for sidebar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hairline) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

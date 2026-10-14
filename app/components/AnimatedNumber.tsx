@@ -52,10 +52,10 @@ export function AnimatedNumber({
   const formatted =
     decimals > 0
       ? currentValue.toFixed(decimals)
-      : Math.floor(currentValue).toLocaleString();
+      : Math.floor(currentValue).toLocaleString("en-US");
 
   return (
-    <span ref={ref} className={`tabular-nums ${className}`}>
+    <span ref={ref} suppressHydrationWarning className={`tabular-nums ${className}`}>
       {prefix}
       {formatted}
       {suffix}
