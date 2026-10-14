@@ -456,7 +456,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
   const headline = t("headline");
 
   return (
-    <section id="hero" className="relative h-[90vh] min-h-[620px] max-h-[1000px] overflow-hidden bg-[#292D29]">
+    <section id="hero" className="relative h-[88svh] sm:h-[88vh] md:h-[90vh] min-h-[580px] md:min-h-[620px] max-h-[1050px] overflow-hidden bg-[#292D29]">
       {/* Background with subtle slow scale */}
       <motion.div
         className="absolute inset-0"
@@ -464,19 +464,35 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <Image
-          src="/hero-concept-store.jpg"
-          alt="Haven concept store"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+        {/* Mobile portrait photograph (native 9:16 tailored for phone screens) */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src="/hero-concept-store-mobile.jpg"
+            alt="Haven concept store interior"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 1px"
+          />
+        </div>
+
+        {/* Desktop landscape photograph (wide 16:9 for large displays) */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/hero-concept-store.jpg"
+            alt="Haven concept store"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="(min-width: 769px) 100vw, 1px"
+          />
+        </div>
       </motion.div>
 
-      {/* Double overlay gradient for enhanced contrast against bright floor */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent pointer-events-none" />
+      {/* Gradients: Mobile deep vertical vignette + Desktop directional vignette */}
+      <div className="block md:hidden absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 pointer-events-none" />
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20 pointer-events-none" />
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent pointer-events-none" />
 
       {/* Interactive Lifestyle Hotspot 1: Brass Lamp */}
       <div className="absolute left-[63%] top-[48%] z-20 -translate-x-1/2 -translate-y-1/2 hidden md:block">
@@ -524,13 +540,13 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col justify-end pb-16 md:pb-20">
+      <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-6 md:px-10 flex flex-col justify-end pb-22 sm:pb-22 md:pb-24">
         {/* Kicker with animated letter expansion */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.65 }}
-          className="flex items-center gap-3 mb-5"
+          className="flex items-center gap-3 mb-4 sm:mb-5"
         >
           <span className="w-6 h-[1.5px] bg-[#7D927C] rounded-full inline-block" />
           <p className="font-body text-[11px] tracking-[0.22em] uppercase text-[#E8E5DA] drop-shadow-sm font-semibold">
@@ -543,7 +559,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
           key={lang + headline}
           text={headline}
           delay={0.25}
-          className="font-display font-bold text-[#F8F7F2] text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] tracking-[-0.04em] max-w-3xl whitespace-pre-line mb-6 drop-shadow-md"
+          className="font-display font-bold text-[#F8F7F2] text-[clamp(2.1rem,6.5vw,5.5rem)] leading-[1.06] tracking-[-0.035em] max-w-3xl whitespace-pre-line mb-4 sm:mb-6 drop-shadow-md"
         />
 
         {/* Hero Narrative Copy with soft blur-up reveal */}
@@ -552,7 +568,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
           initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.6, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="font-body text-[#E8E5DA] text-base md:text-lg max-w-lg mb-8 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+          className="font-body text-[#E8E5DA] text-sm sm:text-base md:text-lg max-w-lg mb-6 sm:mb-8 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] line-clamp-3 sm:line-clamp-none"
         >
           {t("heroCopy")}
         </motion.p>
@@ -562,7 +578,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.7 }}
-          className="flex flex-wrap items-center gap-4"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
         >
           {/* Primary CTA */}
           <motion.a
@@ -570,7 +586,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
             whileHover={{ y: -3, scale: 1.02 }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="inline-flex items-center gap-2 bg-[#F8F7F2] text-[#292D29] font-body font-semibold text-sm tracking-[0.02em] px-7 py-3.5 rounded-lg shadow-[0_6px_20px_rgba(0,0,0,0.4)] hover:bg-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.5)] transition-all duration-200 cursor-pointer"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-[#F8F7F2] text-[#292D29] font-body font-semibold text-xs sm:text-sm tracking-[0.02em] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full shadow-[0_6px_20px_rgba(0,0,0,0.4)] hover:bg-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.5)] transition-all duration-200 cursor-pointer text-center"
           >
             {t("ctaPrimary")}
           </motion.a>
@@ -581,7 +597,7 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
             whileHover={{ y: -3, scale: 1.02 }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 border border-white/50 text-[#F8F7F2] font-body text-sm tracking-[0.02em] px-7 py-3.5 rounded-full hover:bg-white/30 hover:border-white/70 shadow-lg transition-all duration-200 cursor-pointer"
+            className="w-full sm:w-auto justify-center group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 border border-white/50 text-[#F8F7F2] font-body text-xs sm:text-sm tracking-[0.02em] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-white/30 hover:border-white/70 shadow-lg transition-all duration-200 cursor-pointer text-center"
           >
             <span>{t("ctaSecondary")}</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
@@ -590,8 +606,8 @@ function HeroSection({ onAddToCart }: { onAddToCart: (product: Product) => void 
       </div>
 
       {/* Bottom department quick-nav with animated numbers & icons */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-4 flex gap-6 overflow-x-auto scrollbar-none">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/60 to-transparent">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 md:px-10 py-3 sm:py-4 flex gap-5 sm:gap-6 overflow-x-auto scrollbar-none">
           {departments.map((d) => {
             const Icon = CATEGORY_ICONS[d.slug];
             return (

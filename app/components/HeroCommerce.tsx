@@ -259,7 +259,7 @@ export default function HeroCommerce({
               priority
               quality={90}
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-[62%_center] md:object-center"
               onError={() => setImageError(true)}
             />
           </motion.div>
